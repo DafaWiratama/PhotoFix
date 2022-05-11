@@ -9,6 +9,7 @@ const routes: Routes = [
   {path: '', redirectTo: '/Landing', pathMatch: 'full'},
   {path: 'Landing', component: LandingComponent},
   {path: 'About', component: AboutComponent},
+  {path: 'Console/:type', component: ConsoleComponent},
   {path: 'Console', component: ConsoleComponent}
 ]
 

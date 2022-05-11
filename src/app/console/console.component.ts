@@ -2,6 +2,7 @@ import {AfterViewInit, Component, Inject, Injectable, OnInit, ViewChild} from '@
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {HttpClient} from "@angular/common/http";
 import {DomSanitizer} from "@angular/platform-browser";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-console',
@@ -33,10 +34,16 @@ export class ConsoleComponent implements OnInit, AfterViewInit {
 
   private ctx!: CanvasRenderingContext2D;
 
-  constructor(private dialog: MatDialog, private backend: BackendService, private sanitizer: DomSanitizer) {
+  constructor(private dialog: MatDialog, private backend: BackendService, private route: ActivatedRoute) {
+
   }
 
   ngAfterViewInit() {
+    const type = this.route.snapshot.paramMap.get('type')
+    if (type === 'Upscale') this.selected_option = this.options[0];
+    if (type === 'Denoise') this.selected_option = this.options[1];
+    if (type === 'Recolor') this.selected_option = this.options[2];
+
     this.canvas = this.canvas_ref.nativeElement;
     this.ctx = this.canvas.getContext('2d')!;
     this.onCanvasRefresh()
