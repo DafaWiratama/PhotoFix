@@ -41,3 +41,6 @@ testem.log
 .DS_Store
 Thumbs.db
 /.angular/
+/firebase.json
+/.firebaserc
+/.firebase/hosting.ZGlzdFxwcm9qZWN0LWltYWdpbmUtd2ViYXBw.cache
